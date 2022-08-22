@@ -1,4 +1,4 @@
 
-export const USER_URL = 'https://localhost:7018/api/User/'
-export const SHARED_URL = 'https://localhost:7018/api/UserDashboard/'
-export const ADMIN_URL = 'https://localhost:7018/api/Admin/'
+export const USER_URL = 'http://acme.com/api/User/'
+export const SHARED_URL = 'http://acme.com/api/UserDashboard/'
+export const ADMIN_URL = 'http://acme.com/api/Admin/'
