@@ -1,0 +1,97 @@
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-sm-7">
+            <h2 class="text-center" style="font-weight: bold;">Vacant rooms</h2>
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                        <th>Room number</th>
+                        <th>Capacity</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of roomModel | paginate
+                    : {
+                        itemsPerPage: tableSize,
+                        currentPage: page,
+                        totalItems: count
+                    };
+                    let i = index">
+                        <td>{{item.number}}</td>
+                        <td>{{item.capacity}}</td>
+                        <td>{{item.priceForDay}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div>
+                <pagination-controls previousLabel="Prev" nextLabel="Next"
+                    (pageChange)="onTableDataChange($event)">
+                </pagination-controls>
+            </div>
+        </div>
+        <div class="col-sm-4" style="margin-left: 1rem;">
+            <h2 class="text-center" style="font-weight: bold;">Find a room</h2>
+            <form #formFind="ngForm">
+                <div>
+                    <label class="form-label"><i class="fa fa-solid fa-calendar"></i>&nbsp;Begin&nbsp;*</label>
+                </div>
+                <div>
+                    <input type="date" class="form-control" id="name" [(ngModel)]="searchModel.dateBegin"
+                        name="dateBegin" #name="ngModel">
+                </div>
+                <div>
+                    <label class="form-label"><i class="fa fa-solid fa-calendar"></i>&nbsp;End&nbsp;*</label>
+                </div>
+                <div>
+                    <input type="date" class="form-control" id="name" [(ngModel)]="searchModel.dateEnd"
+                        name="dateEnd" #name="ngModel">
+                </div>
+                <div>
+                    <label class="form-label"><i class="fa fa-solid fa-warehouse"></i>&nbsp;Capacity&nbsp;*</label>
+                </div>
+                <div>
+                    <input type="number" class="form-control" id="name" [(ngModel)]="searchModel.capacity"
+                        name="capacity" #name="ngModel">
+                </div>
+                <div class="mt-2">
+                    <button type="submit" class="btn btn-primary" style="font-weight:bold;" (click)="findRoom()">Search</button>
+                    <label [hidden]="isAvailable" style="color:red;font-weight:bold;margin-left:1rem;">Not available</label>
+                    <label [hidden]="!isAvailable" style="color:green;font-weight:bold;margin-left:1rem;">Available</label>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row mt-2" id="rowTwo">
+        <div class="col-sm"></div>
+        <div class="col-sm">
+            <h2 class="text-center">Get Booked</h2>
+            <form #formBook="ngForm" (ngSubmit)="bookRoom()">
+                <div>
+                    <label class="form-label"><i class="fa fa-solid fa-user"></i>&nbsp;First Name&nbsp;*</label>
+                </div>
+                <div>
+                    <input type="text" class="form-control" id="name" required [(ngModel)]="bookModel.firstName"
+                        name="firstName" #name="ngModel">
+                </div>
+                <div>
+                    <label class="form-label"><i class="fa fa-solid fa-user"></i>&nbsp;Last Name&nbsp;*</label>
+                </div>
+                <div>
+                    <input type="text" class="form-control" id="name" required [(ngModel)]="bookModel.lastName"
+                        name="lastName" #name="ngModel">
+                </div>
+                <div>
+                    <label class="form-label"><i class="fa fa-solid fa-warehouse"></i>&nbsp;Room Number&nbsp;*</label>
+                </div>
+                <div>
+                    <input type="number" class="form-control" id="name" [(ngModel)]="roomNumber"
+                        name="roomNumber" #name="ngModel">
+                </div>
+                <div class="mt-2">
+                    <button [disabled]="!isAvailable && !formBook.form.valid" type="submit" class="btn btn-primary">Book</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+h2 {
+    font-weight: bold;
+}
+
+button {
+    font-weight: bold;
+}
+
+label {
+    font-weight: bold;
+}
+
+#rowTwo {
+    margin-bottom: 2rem;
+}
+
+.ng-valid[required], .ng-valid.required  {
+    border-left: 5px solid #42A948; 
+}
+  
+  .ng-invalid:not(form)  {
+    border-left: 5px solid #a94442; 
+}

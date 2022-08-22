@@ -1,0 +1,35 @@
+<div class="row">
+    <h1 class="text-center">Sign In.</h1>
+    <div class="col-sm"></div>
+    <div class="col-sm">
+        <form #loginForm="ngForm" (ngSubmit)="login()">
+            <div>
+                <label class="form-label"><i class="fa fa-solid fa-user"></i>&nbsp;User Name&nbsp;*</label>
+            </div>
+            <div>
+                <input type="text" class="form-control" id="name" required [(ngModel)]="loginModel.userName"
+                    name="userName" #name="ngModel">
+            </div>
+            <div>
+                <label class="form-label"><i class="fa fa-solid fa-lock"></i>&nbsp;Password&nbsp;*</label>
+            </div>
+            <div>
+                <input type="password" class="form-control" id="name" required [(ngModel)]="loginModel.password"
+                    name="password" #name="ngModel">
+            </div>
+            <div class="mt-3" style="float:right">
+                <button [disabled]="!loginForm.form.valid" class="btn btn-success" type="submit">Confirm</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-sm"></div>
+</div>
+<div class="row">
+    <div class="col-sm"></div>
+    <div class="col-sm">
+        <div class="mt-3" style="float:right">
+            <p>Don't have account?&nbsp;<span><a href="/register" style="font-weight:bold;">sign up</a></span></p>
+        </div>
+    </div>
+    <div class="col-sm"></div>
+</div>
