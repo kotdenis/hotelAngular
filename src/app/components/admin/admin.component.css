@@ -1,0 +1,12 @@
+button {
+    font-weight: bold;
+}
+
+h1, h2 {
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+label {
+    font-weight: bold;
+}
